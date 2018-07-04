@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<ruleset name="syntax">
+    <description>A simple syntax checker</description>
+
+    <file>fuel/app/classes</file>
+    <file>fuel/app/views</file>
+    <rule ref="Generic.PHP.Syntax" />
+    <rule ref="Generic.PHP.ForbiddenFunctions" />
+</ruleset>

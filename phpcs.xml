@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<ruleset name="PHP_CodeSniffer">
+
+    <description>The coding standard for PHP_CodeSniffer itself.</description>
+
+    <arg name="colors"/>
+    <arg name="tab-width" value="4"/>
+    <!-- <arg name="report" value="summary"/> -->
+
+    <file>fuel/app/classes</file>
+    <file>fuel/app/views</file>
+
+    <rule ref="Squiz">
+
+        <!-- Excluded mainly to suppress problems that can't be fixed automatically -->
+        <exclude name="Squiz.Commenting.ClosingDeclarationComment.Missing"/>
+        <exclude name="PEAR.ControlStructures.MultiLineCondition.NewlineBeforeOpenBrace"/>
+        <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.NewlineBeforeOpenBrace"/>
+        <exclude name="Squiz.PHP.ForbiddenFunctions.Found"/>
+        <exclude name="Squiz.Commenting.InlineComment.InvalidEndChar"/>
+        <exclude name="Squiz.Operators.ComparisonOperatorUsage.NotAllowed"/>
+        <exclude name="Squiz.Commenting.FunctionComment.WrongStyle"/>
+        <exclude name="Squiz.Operators.ComparisonOperatorUsage.ImplicitTrue"/>
+        <exclude name="Squiz.Functions.FunctionDeclarationArgumentSpacing.SpaceAfterDefault"/>
+        <exclude name="Squiz.Commenting.PostStatementComment.Found"/>
+        <exclude name="Squiz.PHP.DisallowMultipleAssignments.Found"/>
+        <exclude name="Squiz.WhiteSpace.FunctionClosingBraceSpace.SpacingBeforeClose"/>
+        <exclude name="Squiz.WhiteSpace.ControlStructureSpacing.SpacingAfterOpenBrace"/>
+        <exclude name="PEAR.ControlStructures.MultiLineCondition.SpacingAfterOpenBrace"/>
+        <exclude name="Squiz.ControlStructures.ControlSignature.SpaceAfterCloseBrace"/>
+        <exclude name="Squiz.Commenting.FileComment.SpacingAfterOpen"/>
+        <exclude name="Squiz.Commenting.InlineComment.NotCapital"/>
+        <exclude name="Squiz.Objects.ObjectInstantiation.NotAssigned"/>
+        <exclude name="Squiz.ControlStructures.InlineIfDeclaration.NoBrackets"/>
+        <exclude name="Squiz.Commenting.ClassComment.Missing"/>
+        <exclude name="Squiz.Commenting.FileComment.WrongStyle"/>
+
+        <!-- Look at this after run: PEAR.ControlStructures.MultiLineCondition.StartWithBoolean -->
+
+        <!-- The Squiz ruleset has two conflicting rules for null vs NULL; pick one -->
+        <exclude name="Generic.PHP.LowerCaseConstant.Found"/><!-- This rule would require "null" -->
+        <!-- <exclude name="Squiz.NamingConventions.ConstantCase.Found"/> // This rule would require "NULL" -->
+
+        <!-- Won't fix, keep these exclusions -->
+        <exclude name="Squiz.Files.FileExtension.ClassFound"/><!-- FuelPHP needs .php files, not .inc -->
+        <exclude name="Generic.Files.LineLength.TooLong"/>
+        <exclude name="Squiz.Classes.ValidClassName.NotCamelCaps"/><!-- Name format for FuelPHP -->
+        <exclude name="Squiz.Classes.ClassFileName.NoMatch"/><!-- FuelPHP required naming convention -->
+        <exclude name="Squiz.Commenting.FileComment.MissingAuthorTag"/><!-- We don't need author in files -->
+        <exclude name="Squiz.Commenting.FileComment.MissingSubpackageTag"/><!-- We don't need subpackage names in files -->
+        <exclude name="Squiz.Commenting.FileComment.SubpackageTagOrder"/><!-- We don't need subpakage names in files -->
+        <exclude name="Squiz.Functions.FunctionDeclarationArgumentSpacing.SpaceBeforeEquals"/><!-- I like having spaces arund equals, even in function parameters -->
+        <exclude name="Squiz.PHP.DisallowComparisonAssignment.AssignedComparison"/><!-- Needed for function behavior -->
+        <exclude name="Squiz.PHP.DisallowInlineIf.Found"/><!-- Inline conditionals are sometimes necessary -->
+        <exclude name="Generic.ControlStructures.InlineControlStructure.NotAllowed"/><!-- Inline conditionals are sometimes necessary -->
+        <exclude name="Squiz.ControlStructures.ControlSignature.SpaceAfterKeyword"/><!-- Newlines after try are OK -->
+        <exclude name="Squiz.ControlStructures.ControlSignature.SpaceAfterCloseParenthesis"/><!-- Comments and newlines after if statements are OK -->
+        <exclude name="Squiz.Functions.FunctionDeclarationArgumentSpacing.SpacingAfterHint"/><!-- Spaces are OK here -->
+        <exclude name="Squiz.ControlStructures.InlineIfDeclaration.NotSingleLine"/><!-- It's OK to break these to multiple lines for readability -->
+        <exclude name="Generic.Commenting.Todo.TaskFound"/><!-- From time to time we will have todo task comments -->
+        <exclude name="Squiz.WhiteSpace.SemicolonSpacing.Incorrect"/><!-- From time to time we may have semicolons com later for readability -->
+        <exclude name="Squiz.Objects.DisallowObjectStringIndex.Found"/><!-- In some cases object indexes cannot be referenced using dot notation (i.e. when hyphens are used) -->
+        <exclude name="Internal.NoCodeFound"/><!-- In some views, PHP code may not be present but still have a .php extension -->
+        <exclude name="Squiz.Commenting.FileComment.Missing"/><!-- Some files may not have file doc comments and that's OK -->
+        <exclude name="Generic.Strings.UnnecessaryStringConcat.Found"/><!-- Unneeded concats may be used in some cases to improve readability of code for long lines -->
+        <exclude name="Squiz.Commenting.FileComment.CopyrightTagOrder"/><!-- Our files may not have copyright tags and that's OK -->
+        <exclude name="Squiz.NamingConventions.ValidFunctionName.ScopeNotCamelCaps"/><!-- FuelPHP conventions dictate certain name formats -->
+        <exclude name="Squiz.Commenting.ClassComment.TagNotAllowed"/><!-- FuelPHP and Oil require certain comment parameters -->
+
+    </rule>
+
+</ruleset>
